@@ -90,5 +90,22 @@ Two plots side by side:
 
 ---
 
----
+## Files in This Project
 
+- **main.py** → Main module containing:
+  - Data loading and cleaning
+  - `draw_line_plot()`, `draw_bar_plot()`, `draw_box_plot()` functions
+
+- **test_module.py** → Provided by freeCodeCamp, contains automated tests to validate the functions and output images.
+
+- **fcc-forum-pageviews.csv** → Dataset containing date and page view values.
+
+- **line_plot.png** → Generated output for the line plot.
+
+- **bar_plot.png** → Generated output for the bar plot.
+
+- **box_plot.png** → Generated output for the box plots.
+
+- **README.txt** → This file, describing the project details.
+
+---
