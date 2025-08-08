@@ -1,12 +1,11 @@
-🩺 Medical Data Visualizer
+## Medical Data Visualizer
 
 This project is a solution to the Medical Data Visualizer project from freeCodeCamp's Data Analysis with Python Certification.
 
 It uses pandas, seaborn, and matplotlib to clean, analyze, and visualize patient data from a medical examination dataset.
 
 ---
-
-📁 Project Files
+## Project Files
 
 - medical_data_visualizer.py: Main script for data preprocessing and visualization.
 - catplot.png: Bar chart showing counts of good and bad health indicators, split by presence or absence of cardiovascular disease.
@@ -14,7 +13,7 @@ It uses pandas, seaborn, and matplotlib to clean, analyze, and visualize patient
 
 ---
 
-✅ Tasks Completed
+## Tasks Completed
 
 1. Add an Overweight Column
 BMI is calculated using:
@@ -43,3 +42,10 @@ Removed invalid or extreme values by filtering:
     - Masked the upper triangle for clarity.
     - Annotated with values (rounded to 1 decimal place).
     - Helps identify relationships (e.g. weight vs BMI, systolic vs diastolic).
+
+## Example Images
+
+| Cat Plot | Heat Plot | 
+|-----------|----------|
+| ![Cat Plot](catplot.png) | ![Heat Map](heatmap.png) |
+
