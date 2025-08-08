@@ -1,47 +1,105 @@
-## Medical Data Visualizer
+# Medical Data Visualizer
 
-This project is a solution to the Medical Data Visualizer project from freeCodeCamp's Data Analysis with Python Certification.
-
-It uses pandas, seaborn, and matplotlib to clean, analyze, and visualize patient data from a medical examination dataset.
-
----
-## Project Files
-
-- medical_data_visualizer.py: Main script for data preprocessing and visualization.
-- catplot.png: Bar chart showing counts of good and bad health indicators, split by presence or absence of cardiovascular disease.
-- heatmap.png: Correlation heatmap between various medical measurements after cleaning outliers.
+This project is part of the **freeCodeCamp Data Analysis with Python** certification.  
+The goal is to process, clean, and visualize patient medical examination data to identify relationships between cardiovascular disease, body measurements, blood test results, and lifestyle choices.
 
 ---
 
-## Tasks Completed
+## Project Overview
 
-1. Add an Overweight Column
-BMI is calculated using:
-    - BMI = weight / (height in meters)^2
-Patients with BMI > 25 are marked as overweight (1), otherwise not (0).
+We were provided with `medical_examination.csv`, which contains:
 
-2. Normalize Data
-Normalized cholesterol and gluc values so that:
-    - 0 = good
-    - 1 = bad
+- **age** → Age of the patient (in days)
+- **height** → Height (cm)
+- **weight** → Weight (kg)
+- **gender** → Gender code (categorical)
+- **ap_hi** → Systolic blood pressure
+- **ap_lo** → Diastolic blood pressure
+- **cholesterol** → 1 = normal, 2 = above normal, 3 = well above normal
+- **gluc** → 1 = normal, 2 = above normal, 3 = well above normal
+- **smoke** → Binary indicator for smoking
+- **alco** → Binary indicator for alcohol intake
+- **active** → Binary indicator for physical activity
+- **cardio** → Binary indicator for presence of cardiovascular disease
 
-3. Categorical Plot (catplot.png)
-    - Created using Seaborn’s catplot().
-    - Visualizes the distribution of:
-    - cholesterol, gluc, smoke, alco, active, and overweight
-    - Split by cardio status (0 = no heart disease, 1 = has heart disease).
-    - Shows how these health indicators vary among patients.
+The project required creating:
+1. **Categorical Plot** — Counts of healthy/unhealthy indicators split by cardiovascular disease status  
+2. **Correlation Heatmap** — Relationships between different medical measurements after data cleaning  
 
-4. Clean Data
-Removed invalid or extreme values by filtering:
-    - Diastolic pressure > Systolic pressure
-    - Height and weight outside 2.5th–97.5th percentile range
+---
 
-5. Correlation Heatmap (heatmap.png)
-    - Displays Pearson correlation coefficients between health variables.
-    - Masked the upper triangle for clarity.
-    - Annotated with values (rounded to 1 decimal place).
-    - Helps identify relationships (e.g. weight vs BMI, systolic vs diastolic).
+## Tools & Libraries Used
+
+- **Python** → Core programming language
+- **pandas** → Data loading, cleaning, transformation
+- **NumPy** → Mathematical operations (BMI calculation, quantiles)
+- **matplotlib** → Static plotting framework
+- **seaborn** → Advanced statistical visualizations (categorical plots, heatmaps)
+
+---
+
+## Data Processing & Cleaning
+
+### 1. Add Overweight Column
+Body Mass Index (BMI) is calculated as:
+
+```python
+BMI = weight / (height/100) ** 2
+```
+
+Patients with BMI > 25 are marked as **overweight = 1**, otherwise **overweight = 0**.
+
+---
+
+### 2. Normalize Cholesterol & Glucose
+Converted values so that:
+- `0` → good  
+- `1` → bad  
+
+```python
+df['cholesterol'] = (df['cholesterol'] > 1).astype(int)
+df['gluc'] = (df['gluc'] > 1).astype(int)
+```
+
+---
+
+### 3. Clean Data for Heatmap
+Filtered out incorrect or extreme values:
+- `ap_lo <= ap_hi` (valid blood pressure)
+- Height within 2.5th–97.5th percentile
+- Weight within 2.5th–97.5th percentile
+
+---
+
+## Visualizations
+
+### 1. Categorical Plot (`catplot.png`)
+**Shows:** Distribution of binary health indicators (cholesterol, gluc, smoke, alco, active, overweight) split by `cardio` status.  
+**Purpose:** Compare prevalence of healthy/unhealthy habits and measurements between patients with and without cardiovascular disease.  
+**Method:** `seaborn.catplot(kind='count')` after reshaping data with `pd.melt()`.
+
+---
+
+### 2. Correlation Heatmap (`heatmap.png`)
+**Shows:** Pearson correlation coefficients between medical variables (after cleaning).  
+**Purpose:** Identify strong positive or negative correlations between features.  
+**Special Features:**  
+- Masked upper triangle for clarity  
+- Annotated with values rounded to 1 decimal place  
+- Color-coded correlation strength
+
+---
+
+## Files in This Project
+
+- **medical_data_visualizer.py** → Main script for data processing and visualization
+- **medical_examination.csv** → Dataset containing patient medical records
+- **catplot.png** → Generated categorical plot
+- **heatmap.png** → Generated correlation heatmap
+- **test_module.py** → Provided by freeCodeCamp for automated testing
+- **README.md** → This file, describing the project
+
+---
 
 ## Example Images
 
@@ -49,3 +107,4 @@ Removed invalid or extreme values by filtering:
 |-----------|----------|
 | ![Cat Plot](catplot.png) | ![Heat Map](heatmap.png) |
 
+---
