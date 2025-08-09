@@ -63,9 +63,8 @@ We only needed to ensure that:
 ## Predictions
 
 The regression equations are used to predict sea level in the year 2050:
-\[
-\text{Sea Level} = (\text{slope} \times \text{Year}) + \text{intercept}
-\]
+
+**Sea Level = (slope × Year) + intercept**
 - **Full dataset regression** → Prediction accounts for long-term historical trends  
 - **2000+ regression** → Prediction focuses on more recent changes
 
